@@ -2,7 +2,6 @@ package br.com.alura.agenda.model;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
-import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
@@ -13,18 +12,13 @@ import java.util.Calendar;
 public class Aluno implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
-    private int id = 0;
+    private int id;
     private String nome;
-    private String telefone;
     private String email;
     private Calendar momentoDeCadastro = Calendar.getInstance();
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
     }
 
     public void setEmail(String email) {
@@ -33,10 +27,6 @@ public class Aluno implements Serializable {
 
     public String getNome() {
         return nome;
-    }
-
-    public String getTelefone() {
-        return telefone;
     }
 
     public String getEmail() {
@@ -54,7 +44,7 @@ public class Aluno implements Serializable {
     @NonNull
     @Override
     public String toString() {
-        return nome + " - " + telefone;
+        return nome;
     }
 
     public void setId(int id) {
@@ -69,7 +59,7 @@ public class Aluno implements Serializable {
         return id > 0;
     }
 
-    public String dataFormatada(){
+    public String dataFormatada() {
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
         return formatador.format(momentoDeCadastro.getTime());
     }
